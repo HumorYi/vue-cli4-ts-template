@@ -1,0 +1,311 @@
+/*
+ * @Author: Bamboo
+ * @AuthorEmail: bamboo8493@126.com
+ * @AuthorDescription:全局公用 sass 样式，样式前缀为 g-
+ * @Modifier: lixinyong
+ * @ModifierEmail:  292261933@qq.com
+ * @ModifierDescription: 添加公共标题，公共模块样式
+ * @Date: 2019-12-27 10:28:20
+ * @LastEditTime: 2020-04-08 14:19:40
+ */
+@import ./variables
+
+/* 清除浮动 S */
+.g-clearfix:after
+  content: '',
+  display: block
+  clear: both
+/* 清除浮动 E */
+
+/* 必填符号 E */
+.g-required:before
+  content: '*'
+  color: #F56C6C
+  margin-right: 4px
+/* 必填符号 E */
+
+.g-cursor-pointer
+  cursor: pointer
+
+/* 颜色 S */
+.g-color-tip, .g-color-pass, .g-color-refuse
+  font-weight: bold
+
+.g-color-active
+  color: $color_text_active
+
+.g-color-title
+  color: $color_title
+
+.g-color-tip
+  color: $color_tip
+
+.g-color-pass
+  color: $color_pass
+
+.g-color-refuse
+  color: $color_refuse
+/* 颜色 E */
+
+.g-text-ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.g-mask
+  position: fixed
+  left: 0
+  top: 0
+  z-index: 10000
+  width: 100%
+  height: 100%
+
+  background-color: rgba(0, 0, 0, 0.4)
+
+.g-triangle
+  &-left, &-right, &-top, &-bottom
+    position: relative
+
+    &:before
+      content: ''
+      position: absolute
+
+  &-left:before
+    $borderSize: 8px
+    left: -$borderSize
+    top: 20px
+
+    border-bottom: $borderSize solid transparent
+    border-top: $borderSize solid transparent
+    border-right: $borderSize solid #fff
+
+.g-message-triangle
+  $borderSize: 6px
+  $distance: 10px
+
+  &-bottom, &-top
+    position: absolute
+    padding: 2px 6px
+    box-shadow: 0 0 3px rgba(0,0,0,0.16)
+
+    color: #4D78FD
+    background-color: #fff
+
+    &:before
+      content: ''
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
+
+  &-bottom
+    bottom: $distance
+
+    &:before
+      top: 100%
+
+      border-left: $borderSize solid transparent
+      border-right: $borderSize solid transparent
+      border-top: $borderSize solid #E6E6E6
+
+  &-top
+    top: $distance
+
+    &:before
+      bottom: 100%
+
+      border-left: $borderSize solid transparent
+      border-right: $borderSize solid transparent
+      border-bottom: $borderSize solid #E6E6E6
+
+.g-message-triangle-wrap
+  position: relative
+
+  .g-message-triangle
+    $bgc: #5CADFF
+    $borderSize: 10px
+
+    display: none
+
+    position: absolute
+    z-index: 10
+    left: 100%
+    top: 0px
+    padding: 10px
+    width: max-content
+    margin-left: 12px
+    text-align: center
+    border-radius: 6px
+    background-color: $bgc
+
+    &:before
+      content: ''
+      position: absolute
+      left: -$borderSize
+      border-bottom: $borderSize solid $bgc
+      border-left: $borderSize solid transparent
+
+  &:hover .g-message-triangle
+    display: block
+
+.g-private-icon
+  display: inline-block
+  border-color: #fff
+  border-style: solid
+  border-width: 0 2px 2px 0
+
+.g-private-icon-success
+  @extend .g-private-icon
+  width: 8px
+  height: 16px
+  transform: rotate(45deg)
+
+#g-message-wrap
+  position: fixed
+  left: 50%
+  top: 100px
+  z-index: 10000
+  transform: translateX(-50%)
+
+  .g-message
+    box-sizing: border-box
+    display: flex
+    align-items: center
+
+    min-width: 380px
+    padding: 15px 15px 15px 20px
+    border-width: 1px
+    border-style: solid
+    border-radius: 4px
+
+    overflow: hidden
+
+    .icon
+      $size: 16px
+
+      display: inline-block
+      margin-right: 10px
+      width: $size
+      height: $size
+      line-height: $size
+
+      font-size: 12px
+      border-radius: 50%
+      font-weight: bold
+      text-align: center
+      color: #fff
+
+    .close
+      position: absolute
+      top: 50%
+      right: 15px
+      transform: translateY(-50%)
+      margin-top: -1px
+
+      font-size: 20px
+      color: #c0c4cc
+      cursor: pointer
+
+      &:hover
+        color: #909399
+
+    .content
+      padding-right: 16px
+      line-height: 1
+      font-size: 14px
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+    &.success
+      $color: #67c23a
+
+      color: $color
+      border-color: #e1f3d8
+      background-color: #f0f9eb
+
+      .icon
+        background-color: $color
+
+        &:before
+          @extend .g-private-icon-success
+          content: ''
+          width: 5px
+          height: 9px
+          margin-bottom: 1.5px
+
+    &.error
+      $color: #f56c6c
+
+      color: $color
+      border-color: #fde2e2
+      background-color: #fef0f0
+
+      .icon
+        background-color: $color
+
+        &:before
+          content: '×'
+          color: #fff
+          font-size: 14px
+          display: inline-block
+          transform: translate(-0.5px, -0.5px)
+
+    &.warning
+      $color: #e6a23c
+
+      color: $color
+      border-color: #faecd8
+      background-color: #fdf6ec
+
+      .icon
+        background-color: $color
+
+    &.info
+      $color: #909399
+
+      color: $color
+      border-color: #ebeef5
+      background-color: #edf2fc
+
+      .icon
+        background-color: $color
+
+.g-poa-center
+  position: absolute
+  z-index: 400
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+
+.g-poa-top
+  position: absolute
+  z-index: 400
+  left: 50%
+  top: 100px
+  transform: translateX(-50%)
+
+.g-hover-listitem
+  &:not(.cancel-hover):hover
+    transform: translateY(-4px)
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0,.1)
+    transition: all .2s ease-in-out
+    z-index: 600
+
+    .other-data,
+    .features-wrap,
+    .shop-desc
+      display: block
+
+.g-dfc
+  display: flex
+  align-items: center
+  justify-content: center
+
+
+
+
+
+
+
+
+

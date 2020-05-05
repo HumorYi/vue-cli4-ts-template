@@ -1,0 +1,103 @@
+/* 初始化样式 */
+@import ./variables
+
+html
+  -webkit-text-size-adjust: 100
+
+html,
+body
+  height: 100%
+  min-height: 100%
+
+html,
+body,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+button,
+a,
+table,
+thead,
+tbody,
+tr,
+th,
+td,
+blockquote
+  margin: 0
+  padding: 0
+
+input,
+button,
+select,
+textarea
+  outline: none
+  border: none
+  font-family: $font_family
+
+textarea
+  resize: none
+  font-family: $font_family
+
+ul li
+  list-style: none
+
+ol li
+  list-style-type: decimal
+
+i,
+em
+  font-style: normal
+
+a
+  font-family: $font_family
+  text-decoration: none
+  cursor: pointer
+
+a:hover
+  text-decoration: underline
+  text-decoration: none
+
+img
+  border: none
+
+table
+  border-spacing: 0
+
+button
+  font-family: $font_family
+
+/* 去除浏览器输入框类型为数字 增加的上下箭头 */
+input
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button
+    -webkit-appearance: none !important
+
+  &[type="number"]
+    -moz-appearance: textfield
+
+/* 谷歌浏览器输入框记住账号密码后的背景色 */
+input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill
+  /* -webkit-text-fill-color: #ededed !important */
+  /* -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important */
+  background-color: transparent
+  background-image: none
+  transition: background-color 50000s ease-in-out 0s
+
+body
+  font: 14px/1 $font_family, 'Acumin Variable Concept'
+  color: $color_title
+
+  a
+    color: $color_title

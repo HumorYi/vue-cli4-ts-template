@@ -1,0 +1,55 @@
+/*
+ * @Author: Bamboo
+ * @AuthorEmail: bamboo8493@126.com
+ * @AuthorDescription:全局公用 sass 函数，样式前缀为 g_
+ * @Modifier:
+ * @ModifierEmail:
+ * @ModifierDescription:
+ * @Date: 2019-12-27 10:28:20
+ * @LastEditTime: 2020-04-08 14:19:19
+ */
+@import ./variables
+
+@mixin g_box($width: 100%, $height: $width)
+  width: $width
+  height: $height
+
+// input的placeHolder颜色
+@mixin g_placeHolderColor($color: $darkColor, $fontSize: 12px)
+  &::-webkit-input-placeholder
+    /* WebKit, Blink, Edge */
+    color: $color
+    font-size: $fontSize
+
+
+  &:-moz-placeholder
+    /* Mozilla Firefox 4 to 18 */
+    color: $color
+    font-size: $fontSize
+
+
+  &::-moz-placeholder
+    /* Mozilla Firefox 19+ */
+    color: $color
+    font-size: $fontSize
+
+
+  &:-ms-input-placeholder
+    /* Internet Explorer 10-11 */
+    color: $color
+    font-size: $fontSize
+
+// 超过几行就在尾行显示省略符并隐藏其余文字
+@mixin g_lineEllipsis($line: 2)
+  display: -webkit-box
+  -webkit-line-clamp: $line
+  -webkit-box-orient: vertical
+  word-break: break-all
+  overflow: hidden
+
+@mixin g_center()
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
